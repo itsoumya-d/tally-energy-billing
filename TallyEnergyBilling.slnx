@@ -1,0 +1,9 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/TallyEnergyBilling.Api/TallyEnergyBilling.Api.csproj" />
+    <Project Path="src/TallyEnergyBilling.Core/TallyEnergyBilling.Core.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/TallyEnergyBilling.Tests/TallyEnergyBilling.Tests.csproj" />
+  </Folder>
+</Solution>
