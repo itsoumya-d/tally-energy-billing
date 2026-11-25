@@ -40,6 +40,8 @@ period, or an interval ends before it starts.
 | GET | `/api/tariff` | Default tariff |
 | POST | `/api/bills` | Calculate a bill from period + intervals |
 | GET | `/api/sample-bill` | Seeded retail bill used by the dashboard |
+| POST | `/api/ev/settle` | Settle EV charging session (energy, idle grace period, VAT) |
+| GET | `/api/ev/sample-session` | Seeded EV charging session settlement |
 | GET | `/` | Energy Bill Review dashboard |
 
 ```bash

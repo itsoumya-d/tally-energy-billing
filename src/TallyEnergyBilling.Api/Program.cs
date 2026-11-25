@@ -3,6 +3,7 @@ using TallyEnergyBilling.Core;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddSingleton<BillingService>();
+builder.Services.AddSingleton<EvSettlementService>();
 
 var app = builder.Build();
 
@@ -42,6 +43,28 @@ app.MapPost("/api/bills", (BillRequest request, BillingService service) =>
 });
 
 app.MapGet("/api/sample-bill", (BillingService service) => Results.Ok(service.Calculate(Tariff.Default, SamplePeriod())));
+
+app.MapPost("/api/ev/settle", (EvChargingSession session, EvSettlementService service) =>
+{
+    var defaultTariff = new EvChargingTariff();
+    return Results.Ok(service.Settle(defaultTariff, session));
+});
+
+app.MapGet("/api/ev/sample-session", (EvSettlementService service) =>
+{
+    var defaultTariff = new EvChargingTariff();
+    var sampleSession = new EvChargingSession
+    {
+        SessionId = "sess-sample-amsterdam-01",
+        StartTime = DateTimeOffset.UtcNow.AddMinutes(-90),
+        EndTime = DateTimeOffset.UtcNow,
+        EnergyDeliveredKwh = 28.4m,
+        ChargingDurationMinutes = 60,
+        IdleDurationMinutes = 30
+    };
+    return Results.Ok(service.Settle(defaultTariff, sampleSession));
+});
+
 app.MapGet("/", () => Results.Content(TallyDashboard.Page(), "text/html"));
 
 app.Run();
