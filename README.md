@@ -79,6 +79,13 @@ From Tally Group's public site:
 - Radius: `1px`
 - Spacing unit: `8px`
 
+## Telemetry Data Enablement
+
+The engine includes a high-throughput time-series telemetry ingestion pipeline (`TelemetryDataEnablementService`):
+- **Validation & Quarantine**: Monotonic sequence tracking, clock drift rejection (>5m), negative value filters, and Dead Letter Queue quarantine.
+- **Time Window Bucketing**: Normalizes streaming interval readings into aligned 15-minute analytical windows (min, max, average, and latest value).
+- **Quality & Gap Detection**: Monitors data completeness ratios and flags missing telemetry intervals for critical operational monitoring.
+
 ## Docker
 
 ```bash
