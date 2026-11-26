@@ -62,10 +62,10 @@ dotnet run --project src/TallyEnergyBilling.Api
 dotnet test TallyEnergyBilling.slnx
 ```
 
-22 xUnit tests cover peak/shoulder/off-peak banding, weekend behaviour, band
-boundaries, usage/supply/demand/export/GST, proration, empty usage, line items,
-reversed periods, invalid active days, negative values and out-of-period
-intervals.
+34 xUnit tests cover:
+- **Tariff & Retail Billing (22 tests)**: Peak/shoulder/off-peak banding, weekend behaviour, band boundaries, usage/supply/demand/export/GST, proration, empty usage, line items, reversed periods, invalid active days, negative values and out-of-period intervals.
+- **EV Charging Settlement**: Peak/off-peak rate settlement, charger idle fees, battery kWh capacity boundaries, and total fee accounting.
+- **Telemetry Data Enablement (12 tests)**: Monotonic sequence tracking, drift validation (>5m), negative value filters, sliding 15-minute analytical window aggregation, and interval gap detection.
 
 ## Design tokens
 
